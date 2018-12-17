@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
@@ -53,6 +53,11 @@
 	<link rel="apple-touch-icon" sizes="57x57" href="https://mobilepricing-pilot.mohawkind.com/Content/images/icons/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="https://mobilepricing-pilot.mohawkind.com/Content/images/icons/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="https://mobilepricing-pilot.mohawkind.com/Content/images/icons/apple-touch-icon-114x114.png">
+       <link href="https://mobilepricing-pilot.mohawkind.com/Content/css/skeleton_mod.css" rel="stylesheet">
+    <link href="https://mobilepricing-pilot.mohawkind.com/Content/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+    <link href="https://mobilepricing-pilot.mohawkind.com/Content/styles/new-custom-style.css" rel="stylesheet" />
+    <link href="https://mobilepricing-pilot.mohawkind.com/Content/styles/style3.css" rel="stylesheet" />
     <link rel="apple-touch-icon-precomposed" href="https://mobilepricing-pilot.mohawkind.com/Content/images/icons/apple-touch-icon-114x114.png">
     <link rel="apple-touch-startup-image" href="https://mobilepricing-pilot.mohawkind.com/Content/images/icons/startup.png" >
     <link rel="image_src" href="https://mobilepricing-pilot.mohawkind.com/Content/images/icons/display-thumb.jpg" >
@@ -60,22 +65,27 @@
 
        
 
-  <!-- JS
-	================================================== -->
+  <!-- JS ================================================== -->
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script> 
     <script type="text/javascript" charset="utf-8" src="https://mobilepricing-pilot.mohawkind.com/Content/library/jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="childbrowser.js"></script>
     <script type="text/javascript" charset="utf-8" src="email_composer.js"></script>
 
        
- 	    <script src="https://mobilepricing-pilot.mohawkind.com/Content/library/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+ 	    <script src="https://mobilepricing-pilot.mohawkind.com/Content/library/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
         <script src="https://mobilepricing-pilot.mohawkind.com/Content/plugins/jquery-ui-1.10.3.custom.min.js"></script>
         <script src="https://mobilepricing-pilot.mohawkind.com/Content/plugins/jquery.ui.touch-punch.min.js"></script>
         <script src="https://mobilepricing-pilot.mohawkind.com/Content/plugins/zebra_datepicker.js"></script>
         <script src="https://mobilepricing-pilot.mohawkind.com/Content/plugins/jquery.scrollTo.min.js"></script>
         <script src="https://mobilepricing-pilot.mohawkind.com/Content/plugins/jquery.formatCurrency-1.4.0.min.js"></script>
         <script src="https://mobilepricing-pilot.mohawkind.com/Content/plugins/jquery.loadTemplate-1.4.4.js"></script>
-		<script src="https://mobilepricing-pilot.mohawkind.com/Content/plugins/date.js"></script>
+	<script src="https://mobilepricing-pilot.mohawkind.com/Content/plugins/date.js"></script>
+ <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js " type="text/javascript" charset="utf8"></script>
+    <script src="https://mobilepricing-pilot.mohawkind.com/Content/scripts/functions.js"></script>
+    <script src="https://mobilepricingq-pilot.mohawkind.com/Content/scripts/functions_ope.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
 
      
@@ -83,8 +93,97 @@
 
     </head>
 
-     <body id="theBody" class="mpa_login" >
 
+<body class="mpa_login">
+    <div class="wrapper">
+        <div id="theHeader">
+            <nav id="sidebar">
+                <div id="dismiss" class="dismiss hide">
+                    <i class="fa fa-times"></i>
+                </div>
+                <div class="sidebar-header">
+                    <h6 class="txt_btn" id="BackBtn">
+                        <a href="#" class="sidebar-anchor btn btn-danger" id="menuBackButton">
+                            <i class="fa fa-angle-left"></i>&nbsp; Back
+                        </a>
+                    </h6>
+                </div>
+                <ul class="list-unstyled components">
+                    <li class="active">
+                        <h6 class="txt_btn" id="homeBtn">
+                            <a href="javascript:gotoBranchSelect();" class="sidebar-anchor">
+                                Home
+                            </a>
+                        </h6>
+                    </li>
+                    <li>
+                        <h6 class="txt_btn" id="logging_status"></h6>
+                    </li>
+                    <li>
+                        <h6 class="txt_btn" id="accountsBtn" style="display: none">
+                            <a href="javascript:goBackAccountList();" class="sidebar-anchor">Accounts</a>
+                        </h6>
+                    </li>
+                    <li>
+                        <h6 class="txt_btn" id="inboxBtn"></h6>
+                    </li>
+                    <li>
+                        <h6 class="txt_btn" id="productsBtn" style="display: none">
+                            <a href="javascript:goBackAddProducts();" class="sidebar-anchor">Products</a>
+                        </h6>
+                    </li>
+                </ul>
+                <ul class="list-unstyled CTAs">
+                    <li>
+                        <h6 class="txt_btn" id="logoutBtn">
+                            <a href="javascript:onLogout();" class="sidebar-anchor">Logout</a>
+                        </h6>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+        <div id="">
+            <nav id="topNav" class="topNav">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-lg-1 col-md-1 col-sm-2 col-xs-2">
+                            <a id="sidebarCollapse">
+                                <i style="color: #ffffff;font-size: 40px;margin-left:15px;" class="fa fa-bars"></i>
+                            </a>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-5 col-xs-10" style="text-align:center;">
+                            <img src="http://mobilepricingqa.mohawkind.com/Content/images/logos/new_logo.png" class="header_logo img-responsive" />
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12 header-right">
+                            <ul>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <span class="fa fa-gear"></span>
+                                        <strong class="welcomeUserNameAs"></strong>
+                                        <span class="fa fa-angle-down"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <div class="m_console_data">
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <div id="theBody"></div>
+        </div>
+    </div>
+    <div id="data_loading" class="overlay">
+        <div>
+            <i class="fa fa-refresh fa-spin fa-3x"></i><i class="fa  fa-3x">Working...</i>
+        </div>
+    </div>
     <script>
         var G_AbsoluteUri = 'https://mobilepricing-pilot.mohawkind.com/';
         var G_Home = 'Main.html';
@@ -152,9 +251,59 @@
 
         }
 
+
+        function showFilterDiv() {
+            $('.filterRow').show();
+            $('.SearchRow').hide();
+        }
+
+        function showSearchDiv() {
+            $('.filterRow').hide();
+            $('.SearchRow').show();
+        }
+
+        window.onclick = function (event) {
+            if ($('.dropdown.keep-open').has(event.target).length == 0 //checks if descendants of $box was clicked
+                &&
+                !$('.dropdown.keep-open').is(event.target) //checks if the $box itself was clicked
+                &&
+                $(event.target).parents("li").length == 0) {
+                //if ($(event.target).parents(".dropdown.keep-open").length === 0) {
+                $('.dropdown.keep-open').removeClass("open");
+                $('.dropdown-toggle').attr("aria-expanded", false);
+            }
+        }
+
         $(document).ready(function () {
            
             doOnReady();
+
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+            $('#dismiss, .overlay, #sidebar a').on('click', function () {
+                $('#sidebar').removeClass('active');
+                $('.overlay').removeClass('active');
+                $('body').removeClass('overFlow');
+                $("#dismiss").addClass("hide");
+            });
+            var $menu = $('#sidebar');
+            $(document).mouseup(function (e) {
+                if (!$menu.is(e.target) && $menu.has(e.target).length === 0 && $('#sidebar').hasClass('active')) {
+                    $('#sidebar').removeClass('active');
+                    $('.overlay').removeClass('active');
+                    $('body').removeClass('overFlow');
+                    $("#dismiss").addClass("hide");
+                }
+            });
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').addClass('active');
+                $('body').addClass('overFlow');
+                $('.overlay').addClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                $("#dismiss").removeClass("hide");
+            });
         });
 
     </script>
@@ -164,5 +313,4 @@
 
       <script src="https://mobilepricing-pilot.mohawkind.com/Content/scripts/functions.js" ></script>
 </html>
-
 
