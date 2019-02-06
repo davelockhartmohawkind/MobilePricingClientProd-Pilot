@@ -86,8 +86,6 @@
 		<script src="http://mobilepricing-pilot.mohawkind.com/Content/plugins/jquery.loadTemplate-1.4.4.js"></script>
 		<script src="http://mobilepricing-pilot.mohawkind.com/Content/plugins/date.js"></script>
 		<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js " type="text/javascript" charset="utf8"></script>
-		<script src="http://mobilepricing-pilot.mohawkind.com/Content/scripts/functions.js"></script>
-		<script src="http://mobilepricing-pilot.mohawkind.com/Content/scripts/functions_ope.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 		<!--End  MM new JS include -->  
   
@@ -141,38 +139,39 @@
 					</ul>
 				</nav>
 
-			</div>
-			        <div id="" class="touch" style="overflow-x:auto !important;overflow-y: scroll !important; -webkit-overflow-scrolling: touch !important">
-				<nav id="topNav" class="topNav">
-					<div class="container-fluid">
+        </div>
+	       <!--  <div id="" class="touch" style="overflow-x:auto !important;overflow-y: scroll !important; -webkit-overflow-scrolling: touch !important"> -->
+			 <div id="" class="touch">
+	            <nav id="topNav" class="topNav">
+	                <div class="container-fluid">
 
-						<div class="row">
-							<div class="col-lg-1 col-md-1 col-sm-2 col-xs-2">
-								<a id="sidebarCollapse">
-									<i style="color: #ffffff;font-size: 40px;margin-left:15px;" class="fa fa-bars"></i>
-								</a>
-							</div>
-							<div class="col-lg-8 col-md-8 col-sm-5 col-xs-10" style="text-align:center;">
-								<img src="http://mobilepricing-pilot.mohawkind.com/Content/images/logos/new_logo.png" class="header_logo img-responsive" />
-							</div>
-							<div class="col-lg-3 col-md-3 col-sm-5 col-xs-12 header-right">
-								<ul>
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-											<span class="fa fa-gear"></span>
-											<strong class="welcomeUserNameAs"></strong>
-											<span class="fa fa-angle-down"></span>
-										</a>
-										<ul class="dropdown-menu">
-											<li>
-												<div class="m_console_data">
-												</div>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</div>
-						</div>
+			<div class="row">
+				<div class="col-lg-1 col-md-1 col-sm-2 col-xs-2">
+					<a id="sidebarCollapse">
+						<i style="color: #ffffff;font-size: 40px;margin-left:15px;" class="fa fa-bars"></i>
+					</a>
+				</div>
+				<div class="col-lg-8 col-md-8 col-sm-5 col-xs-10" style="text-align:center;">
+					<img src="http://mobilepricing-pilot.mohawkind.com/Content/images/logos/new_logo.png" class="header_logo img-responsive" />
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-5 col-xs-12 header-right">
+					<ul>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<span class="fa fa-gear"></span>
+								<strong class="welcomeUserNameAs"></strong>
+								<span class="fa fa-angle-down"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<div class="m_console_data">
+									</div>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
 					</div>
 				</nav>
 				<div id="theBody"></div>
@@ -187,11 +186,9 @@
 			var G_AbsoluteUri = 'https://mobilepricing-pilot.mohawkind.com/';
 			var G_Home = 'Main.html';
 			var G_appVersion = "";
-
 			var imageAddr = G_AbsoluteUri + 'Content/images/backgrounds/login_screen_bg.jpg?n=' + Math.random();
 			var startTime, endTime;
 			var downloadSize = 27; //29 kb
-
 			var showResults = function () {
 				//alert('showresults');
 				var duration = (endTime - startTime) / 1000;
@@ -199,7 +196,6 @@
 				var speedBps = (bitsLoaded / duration).toFixed(2);
 				var speedKbps = (speedBps / 1024).toFixed(2);
 				var speedMbps = (speedKbps / 1024).toFixed(2);
-
 				// Round to two digits
 				cSpeed = Math.round(speedKbps * 10) / 10;
 				$('.indicator').css('width', '0%');
@@ -207,38 +203,26 @@
 				$('.indicator').css('display', 'block');
 				$('.indicator').delay(300).animate({ 'width': '90%' }, 600, function () {
 					$('#cspeed').html(cSpeed + 'kbs');
-
 				});
-
 			}
-
 			var getConnectionSpeed = function () {
 				//alert('getconnectionspeed');
-
 				var download = new Image();
-
 				download.onload = function () {
 					endTime = (new Date()).getTime();
 					showResults();
 				}
-
 				//start download here
 				startTime = (new Date()).getTime();
 				download.src = imageAddr;
-
 			}
-
 			var doOnReady = function() {
-
 				$.post(
-
 					   G_AbsoluteUri  + 'Home/_login',
-
 							{ whatversion: '' },
 							handleLoginPage
 						);
 			}
-
 			var handleLoginPage = function(content) {
 				if (content != undefined && content != null && content != "") {
 					$("#theBody").removeClass('mpa_app');
@@ -247,20 +231,15 @@
 					$("#theBody").html(content);
 					doOnLoginReady();
 				}
-
 			}
-
-
 			function showFilterDiv() {
 				$('.filterRow').show();
 				$('.SearchRow').hide();
 			}
-
 			function showSearchDiv() {
 				$('.filterRow').hide();
 				$('.SearchRow').show();
 			}
-
 			window.onclick = function (event) {
 				if ($('.dropdown.keep-open').has(event.target).length == 0 //checks if descendants of $box was clicked
 					&&
@@ -272,11 +251,9 @@
 					$('.dropdown-toggle').attr("aria-expanded", false);
 				}
 			}
-
 			$(document).ready(function () {
 			   
 				doOnReady();
-
 				$("#sidebar").mCustomScrollbar({
 					theme: "minimal"
 				});
@@ -304,11 +281,9 @@
 					$("#dismiss").removeClass("hide");
 				});
 			});
-
 		</script>
 		  
 	</body>
 
 	<script src="https://mobilepricing-pilot.mohawkind.com/Content/scripts/functions.js" ></script>
 </html>
-
